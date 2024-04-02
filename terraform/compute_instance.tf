@@ -9,7 +9,7 @@ resource "google_compute_instance" "instance-1" {
 
   boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-11"
+      image = "cos-cloud/cos-stable"
       size  = 10
       type  = "pd-standard"
     }
@@ -23,15 +23,23 @@ resource "google_compute_instance" "instance-1" {
     }
   }
 
-  metadata_startup_script = <<-SCRIPT
-    #!/bin/bash
-    apt-get update
-    apt-get install -y nginx
-    service nginx start
-  SCRIPT
+  tags = ["web"]
 
   service_account {
     email  = google_service_account.instance-1.email
     scopes = ["cloud-platform"]
+  }
+  metadata = {
+    gce-container-declaration = <<-EOF
+    spec:
+      containers:
+        - name: nginx
+          image: docker.io/bkimminich/juice-shop
+          stdin: false
+          tty: false
+      restartPolicy: Always
+      # This container declaration format is not public API and may change without notice. Please
+      # use gcloud command-line tool or Google Cloud Console to run Containers on Google Compute Engine.
+    EOF
   }
 }
