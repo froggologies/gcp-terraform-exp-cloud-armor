@@ -86,6 +86,7 @@ resource "google_compute_firewall" "allow-healthcheck" {
 
   allow {
     protocol = "tcp"
+    ports    = ["3000"]
   }
 
   target_tags = ["allow-healthcheck"]
