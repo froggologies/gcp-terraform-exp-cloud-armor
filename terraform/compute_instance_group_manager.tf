@@ -9,4 +9,9 @@ resource "google_compute_instance_group_manager" "instance-group-manager-1" {
   base_instance_name = "juice-shop"
   zone               = "us-central1-f"
   target_size        = "1"
+
+  named_port {
+    name = "http"
+    port = 3000
+  }
 }

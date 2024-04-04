@@ -63,7 +63,7 @@ resource "google_compute_firewall" "default-allow-internal" {
 resource "google_compute_firewall" "web" {
   network     = google_compute_network.default.name
   project     = google_project.main_project.project_id
-  description = "Allows TCP connections from any source to any instance on the network using port 80 and 443."
+  description = "Allows TCP connections from any source to any instance on the network using port 3000, 80 and 443."
 
   name          = "web"
   source_ranges = ["0.0.0.0/0"]
@@ -74,4 +74,19 @@ resource "google_compute_firewall" "web" {
   }
 
   target_tags = ["web"]
+}
+
+resource "google_compute_firewall" "allow-healthcheck" {
+  network     = google_compute_network.default.name
+  project     = google_project.main_project.project_id
+  description = ""
+
+  name          = "allow-healthcheck"
+  source_ranges = ["130.211.0.0/22", "35.191.0.0/16"]
+
+  allow {
+    protocol = "tcp"
+  }
+
+  target_tags = ["allow-healthcheck"]
 }

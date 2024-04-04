@@ -3,7 +3,7 @@ resource "google_compute_instance_template" "instance-template-1" {
   name         = "juice-shop-template"
   machine_type = "e2-micro"
 
-  tags = ["web"]
+  tags = ["web", "allow-healthcheck"]
 
   disk {
     source_image = "cos-cloud/cos-stable"
@@ -16,13 +16,9 @@ resource "google_compute_instance_template" "instance-template-1" {
   network_interface {
     network    = google_compute_network.default.id
     subnetwork = google_compute_subnetwork.us-central1.id
-    access_config {
-      network_tier = "STANDARD"
-    }
   }
 
   scheduling {
-    preemptible       = false
     automatic_restart = true
   }
 
