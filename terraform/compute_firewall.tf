@@ -56,7 +56,15 @@ resource "google_compute_firewall" "default-allow-internal" {
   source_ranges = ["10.128.0.0/9"]
 
   allow {
-    protocol = "all"
+    protocol = "tcp"
+    ports    = ["0-65535"]
+  }
+  allow {
+    protocol = "udp"
+    ports    = ["0-65535"]
+  }
+  allow {
+    protocol = "icmp"
   }
 }
 
@@ -86,7 +94,6 @@ resource "google_compute_firewall" "allow-healthcheck" {
 
   allow {
     protocol = "tcp"
-    ports    = ["3000"]
   }
 
   target_tags = ["allow-healthcheck"]

@@ -1,13 +1,17 @@
 resource "google_compute_health_check" "tcp-port-3000" {
-  project = google_project.main_project.project_id
-  name    = "tcp-port-3000"
+  depends_on = [google_project_service.services.0]
+  project    = google_project.main_project.project_id
+  name       = "tcp-port-3000"
 
   tcp_health_check {
-    port = 3000
+    port_specification = "USE_FIXED_PORT"
+    port               = 3000
   }
   log_config {
     enable = true
   }
+  check_interval_sec  = 10
+  unhealthy_threshold = 3
 }
 
 resource "google_compute_backend_service" "backend-service" {
@@ -33,7 +37,7 @@ resource "google_compute_url_map" "juice_shop_loadbalancer" {
 }
 
 resource "google_compute_target_http_proxy" "juice-shop-proxy" {
-
+  project = google_project.main_project.project_id
   name    = "juice-shop-proxy"
   url_map = google_compute_url_map.juice_shop_loadbalancer.id
 }

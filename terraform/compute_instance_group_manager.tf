@@ -7,7 +7,7 @@ resource "google_compute_instance_group_manager" "instance-group-manager-1" {
   project            = google_project.main_project.project_id
   name               = "juice-shop-managed-group"
   base_instance_name = "juice-shop"
-  zone               = "us-central1-f"
+  zone               = "us-central1-a"
   target_size        = "1"
 
   named_port {
