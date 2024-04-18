@@ -28,6 +28,8 @@ resource "google_compute_backend_service" "backend-service" {
   log_config {
     enable = true
   }
+
+  security_policy = google_compute_security_policy.policy1.id
 }
 
 resource "google_compute_url_map" "juice_shop_loadbalancer" {
