@@ -3,7 +3,7 @@ resource "google_compute_health_check" "health-check1" {
   project    = google_project.main_project.project_id
   name       = "health-check1"
 
-  http_health_check {
+  tcp_health_check {
     port_specification = "USE_SERVING_PORT"
   }
   log_config {
