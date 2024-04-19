@@ -6,9 +6,7 @@ resource "google_compute_health_check" "health-check1" {
   tcp_health_check {
     port_specification = "USE_SERVING_PORT"
   }
-  log_config {
-    enable = true
-  }
+
   check_interval_sec  = 10
   unhealthy_threshold = 3
 }

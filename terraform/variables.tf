@@ -8,7 +8,7 @@ variable "folder_id" {
   description = "value of folder id"
 }
 
-variable "owasp_rules" {
+variable "crs_rules" {
   type = map(object({
     preview_mode = string
     action       = string

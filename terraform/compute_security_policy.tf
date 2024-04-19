@@ -1,6 +1,6 @@
 resource "google_compute_security_policy" "policy1" {
   project = google_project.main_project.project_id
-  name    = "owasp-security-policy"
+  name    = "crs-security-policy"
   rule {
     action   = "allow"
     priority = "2147483647"
@@ -14,7 +14,7 @@ resource "google_compute_security_policy" "policy1" {
   }
 
   dynamic "rule" {
-    for_each = var.owasp_rules
+    for_each = var.crs_rules
     content {
       preview     = rule.value.preview_mode
       action      = rule.value.action
