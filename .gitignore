@@ -39,4 +39,4 @@ terraform.rc
 *.lock.hcl
 *.json
 
-.env.*
+.env*

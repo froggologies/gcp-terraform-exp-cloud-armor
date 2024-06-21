@@ -1,12 +1,15 @@
 # Cloud Armor Preconfigured WAF Rules
 
 ## Architecture
+
 ![Architecture](img/architecture.jpeg)
 
 ## OWASP Juice Shop page
+
 ![OWASP Juice Shop page](img/SCR-20240403-jrdm.png)
 
 ## Cloud Armor rules
+
 ![Cloud Armor](img/SCR-20240419-jthe.png)
 
 ## Testing
@@ -20,8 +23,9 @@ PUBLIC_SVC_IP=<lb-ip-address>
 1. In Cloud Shell, confirm the LFI vulnerability is mitigated:
 
 ```sh
-curl -Ii http://$PUBLIC_SVC_IP/?a=../
+curl -Ii "http://$PUBLIC_SVC_IP/?a=../"
 ```
+
 Output:
 
 ```
@@ -32,7 +36,7 @@ HTTP/1.1 403 Forbidden
 2. In Cloud Shell, confirm the RCE attack is mitigated:
 
 ```sh
-curl -Ii http://$PUBLIC_SVC_IP/ftp?doc=/bin/ls
+curl -Ii "http://$PUBLIC_SVC_IP/ftp?doc=/bin/ls"
 ```
 
 Output:
@@ -73,7 +77,7 @@ HTTP/1.1 403 Forbidden
 5. In Cloud Shell, confirm session fixation attempts are blocked:
 
 ```sh
-curl -Ii http://$PUBLIC_SVC_IP/?session_id=a
+curl -Ii "http://$PUBLIC_SVC_IP/?session_id=a"
 ```
 
 Output:
@@ -86,4 +90,5 @@ HTTP/1.1 403 Forbidden
 ![logs](img/SCR-20240419-kfbb.png)
 
 ## Reference
+
 [Cloud Armor Preconfigured WAF Rules](https://partner.cloudskillsboost.google/focuses/57169?catalog_rank=%7B%22rank%22:1,%22num_filters%22:0,%22has_search%22:true%7D&parent=catalog&search_id=30728457)
