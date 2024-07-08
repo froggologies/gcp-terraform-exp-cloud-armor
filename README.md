@@ -2,7 +2,7 @@
 
 ## Architecture
 
-![Architecture](img/architecture.jpeg)
+![Architecture](img/architecture.svg)
 
 ## OWASP Juice Shop page
 
@@ -11,6 +11,12 @@
 ## Cloud Armor rules
 
 ![Cloud Armor](img/SCR-20240419-jthe.png)
+
+## ToDo
+
+- Update README
+- Test more vulnerabilities
+- Add alerts
 
 ## Testing
 
