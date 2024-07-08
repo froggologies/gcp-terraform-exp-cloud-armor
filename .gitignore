@@ -40,3 +40,4 @@ terraform.rc
 *.json
 
 .env*
+.DS_Store
