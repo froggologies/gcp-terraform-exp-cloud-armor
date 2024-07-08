@@ -1,5 +1,5 @@
 resource "google_compute_security_policy" "policy1" {
-  project = google_project.main_project.project_id
+  project = var.project_id
   name    = "crs-security-policy"
   rule {
     action   = "allow"

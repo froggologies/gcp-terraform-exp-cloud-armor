@@ -1,6 +1,5 @@
 resource "google_compute_instance_template" "instance-template-1" {
-  depends_on   = [google_project_service.services.0]
-  project      = google_project.main_project.project_id
+  project      = var.project_id
   name         = "juice-shop-template"
   machine_type = "e2-micro"
 

@@ -1,6 +1,6 @@
 resource "google_compute_firewall" "default-allow-icmp" {
   network = google_compute_network.default.name
-  project = google_project.main_project.project_id
+  project = var.project_id
 
   description = "Allows ICMP connections from any source to any instance on the network."
 
@@ -15,7 +15,7 @@ resource "google_compute_firewall" "default-allow-icmp" {
 
 resource "google_compute_firewall" "default-allow-rdp" {
   network = google_compute_network.default.name
-  project = google_project.main_project.project_id
+  project = var.project_id
 
   description = "Allows RDP connections from any source to any instance on the network using port 3389."
 
@@ -31,7 +31,7 @@ resource "google_compute_firewall" "default-allow-rdp" {
 
 resource "google_compute_firewall" "default-allow-ssh" {
   network = google_compute_network.default.name
-  project = google_project.main_project.project_id
+  project = var.project_id
 
   description = "Allows TCP connections from any source to any instance on the network using port 22."
 
@@ -47,7 +47,7 @@ resource "google_compute_firewall" "default-allow-ssh" {
 
 resource "google_compute_firewall" "default-allow-internal" {
   network = google_compute_network.default.name
-  project = google_project.main_project.project_id
+  project = var.project_id
 
   description = "Allows TCP connections from any source to any instance on the network using port 22."
 
@@ -70,7 +70,7 @@ resource "google_compute_firewall" "default-allow-internal" {
 
 resource "google_compute_firewall" "web" {
   network     = google_compute_network.default.name
-  project     = google_project.main_project.project_id
+  project     = var.project_id
   description = "Allows TCP connections from any source to any instance on the network using port 3000, 80 and 443."
 
   name          = "web"
@@ -86,7 +86,7 @@ resource "google_compute_firewall" "web" {
 
 resource "google_compute_firewall" "allow-healthcheck" {
   network     = google_compute_network.default.name
-  project     = google_project.main_project.project_id
+  project     = var.project_id
   description = ""
 
   name          = "allow-healthcheck"
