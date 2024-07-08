@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket = "state-backend-exp-cloud-armor-03dfaf"
+    bucket = "state-backend-exp-cloud-armor-160969"
     prefix = "terraform/resources"
   }
 }
