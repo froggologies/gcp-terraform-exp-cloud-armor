@@ -28,4 +28,4 @@ api +action:
   @terraform -chdir="01-api" {{action}}
 
 resources +action:
-  @terraform -chdir="01-api" {{action}}
+  @terraform -chdir="02-resources" {{action}}
